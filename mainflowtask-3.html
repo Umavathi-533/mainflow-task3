@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmetics Store</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #ff69b4; /* Light pink color */
+            color: white;
+            padding: 45px 0; /* Adjusted padding */
+            text-align: center;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://via.placeholder.com/1200x600/ff69b4/ffffff?text=Cosmetics+Store');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            color: white;
+            text-align: center;
+            padding-top: 70px; /* Adjusted to avoid overlap */
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            margin-top: 20px; /* Added margin-top to avoid content overlapping with hero section */
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .card button {
+            padding: 10px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #e55a93;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            footer {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Form Styling */
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-container input,
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .form-container button {
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #e55a93;
+        }
+
+        /* Order Confirmation Section */
+        .order-confirmation {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cosmetics E-Commerce Store</h1>
+        <h3>Beauty Starts Here..........!</h3>
+    </header>
+
+    <div class="content">
+        <!-- Cosmetic Products -->
+        <div class="card">
+            <img src="https://images.mamaearth.in/catalog/product/p/i/pink_rose_swatch_copy.jpg?format=auto&height=600" alt="Lipstick">
+            <h3>Luxury Lipstick</h3>
+            <p>Perfect for every occasion.</p>
+            <button onclick="addToCart('Luxury Lipstick', 20)">Add to Cart - $20</button>
+        </div>
+        <div class="card">
+            <img src="https://makeover-bucket-testing.s3.ap-southeast-1.amazonaws.com/images/productthumbnail/069cd736f0391910ab4f02cb4e4dd2c3961bac14.jpg" alt="Foundation">
+            <h3>Flawless Foundation</h3>
+            <p>For a smooth, radiant finish.</p>
+            <button onclick="addToCart('Flawless Foundation', 35)">Add to Cart - $35</button>
+        </div>
+        <div class="card">
+            <img src="https://missrose.com.pk/cdn/shop/files/Mascarathermal1.jpg?v=1705654924" alt="Mascara">
+            <h3>Volumizing Mascara</h3>
+            <p>Make your lashes stand out.</p>
+            <button onclick="addToCart('Volumizing Mascara', 15)">Add to Cart - $15</button>
+        </div>
+        <div class="card">
+            <img src="https://origene.co.in/cdn/shop/files/8904418903460_01.jpg?v=1712314671" alt="Highlighter">
+            <h3>Flawless Highlighter</h3>
+            <p>Gives your skin a radiant glow.</p>
+            <button onclick="addToCart('Flawless Highlighter', 25)">Add to Cart - $25</button>
+        </div>
+        <div class="card">
+            <img src="https://m.media-amazon.com/images/I/71lejHAxcqL.jpg" alt="Bronzer">
+            <h3>Sun-Kissed Bronzer</h3>
+            <p>For a perfect sun-kissed look.</p>
+            <button onclick="addToCart('Sun-Kissed Bronzer', 28)">Add to Cart - $28</button>
+        </div>
+        <div class="card">
+            <img src="https://img.kingpowerclick.com/cdn-cgi/image/format=auto/kingpower-com/image/upload/w_640,h_640/v1705979804/prod/905188-L1.jpg" alt="Setting Spray">
+            <h3>All Nighter Setting Spray</h3>
+            <p>Long-lasting makeup with a matte finish.</p>
+            <button onclick="addToCart('All Nighter Setting Spray', 32)">Add to Cart - $32</button>
+        </div>
+    </div>
+
+    <!-- Order Form Section -->
+    <div class="form-container">
+        <h2>Order Now</h2>
+        <form id="orderForm" onsubmit="return validateForm()">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="address">Shipping Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+
+    <!-- Order Confirmation Section -->
+    <div id="orderConfirmation" class="order-confirmation">
+        <h2>Order Confirmation</h2>
+        <p>Your order has been successfully placed!</p>
+        <p><strong>Customer Name:</strong> <span id="customerName"></span></p>
+        <p><strong>Email:</strong> <span id="customerEmail"></span></p>
+        <p><strong>Address:</strong> <span id="customerAddress"></span></p>
+        <p><strong>Items Ordered:</strong></p>
+        <ul id="orderedItems"></ul>
+    </div>
+
+    <footer>
+        &copy; 2024 Cosmetics Store. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Store cart items
+        let cart = [];
+
+        // Add items to cart
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            alert(item + " has been added to your cart.");
+        }
+
+        // Validate order form and display confirmation
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            
+            // Sanitize user inputs to prevent XSS attacks
+            const sanitized_name = sanitizeInput(name);
+            const sanitized_email = sanitizeInput(email);
+            const sanitized_address = sanitizeInput(address);
+
+            if (!sanitized_name || !sanitized_email || !sanitized_address) {
+                alert("Please fill in all the fields correctly.");
+                return false;
+            }
+
+            // Show order confirmation with sanitized values
+            document.getElementById('customerName').innerText = sanitized_name;
+            document.getElementById('customerEmail').innerText = sanitized_email;
+            document.getElementById('customerAddress').innerText = sanitized_address;
+
+            // Display cart items
+            const orderedItemsList = document.getElementById('orderedItems');
+            orderedItemsList.innerHTML = ''; // Clear previous items
+
+            // Display all cart items
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.item} - $${item.price}`;
+                orderedItemsList.appendChild(listItem);
+            });
+
+            // Show the order confirmation
+            document.getElementById('orderConfirmation').style.display = 'block';
+
+            return false; // Prevent form submission
+        }
+
+        // Sanitize user input to prevent XSS attacks
+        function sanitizeInput(input) {
+            const element = document.createElement('div');
+            if (input) {
+                element.innerText = input;
+                return element.innerHTML;
+            }
+            return '';
+        }
+    </script>
+</body>
+</html>
+
